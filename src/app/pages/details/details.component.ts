@@ -9,7 +9,6 @@ import {MovieApiService} from "../../service/movie-api.service";
 })
 export class DetailsComponent implements OnInit {
   public movie: any
-  public apiError: boolean = false
 
   constructor(
     private activeRoute: ActivatedRoute,
@@ -22,7 +21,13 @@ export class DetailsComponent implements OnInit {
   }
 
   public movies() {
-
+    const id = this.activeRoute.snapshot.params['id']
+    console.log(this.movieService.getMovie(id).subscribe(
+      res => {
+        this.movie = res
+      }
+    ))
+    return this.movieService.getMovie(id)
   }
 
   getMovieCover(url: any) {
