@@ -1,5 +1,32 @@
 <movie-header></movie-header>
 
 <main>
+    <section class="movie__names">
+      <h1> {{movie.title}} </h1>
+    </section>
 
+    <section class="movie__status">
+          <img
+            [src]="getMovieCover(movie.poster_path)"
+            [alt]="movie.title"
+            class="slideInDown"
+          >
+
+      <article class="movie__status__statistics fadeIn">
+        <section>
+          <p>
+            {{ movie.overview }}
+          </p>
+          <ul>
+            <li>Status: {{ movie.status }}</li>
+            <li>Nota: {{movie.vote_average}}</li>
+            <li>Lançamento: {{movie.release_date}}</li>
+          </ul>
+          <a href="{{movie.homepage}}">Site oficial</a>
+        </section>
+        <a [routerLink]="['']" class="btn btn__secondary">
+          Voltar
+        </a>
+      </article>
+    </section>
 </main>

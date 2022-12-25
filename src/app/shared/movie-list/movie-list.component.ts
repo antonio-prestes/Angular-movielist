@@ -10,6 +10,7 @@ export class MovieListComponent implements OnInit {
 
   private setAllPopularMovies: any
   public getAllPopularMovies: any
+  public apiError: boolean = false
 
   constructor(
     private movieApiService: MovieApiService
@@ -21,8 +22,11 @@ export class MovieListComponent implements OnInit {
       res => {
         this.setAllPopularMovies = res.results
         this.getAllPopularMovies = this.setAllPopularMovies
-        console.log(this.getAllPopularMovies)
-      })
+      },
+      error => {
+        this.apiError = true
+      }
+      )
   }
 
   getMovieCover(url: any) {

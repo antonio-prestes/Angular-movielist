@@ -17,7 +17,8 @@ export class MovieApiService {
     return this.http.get<any>(this.withBaseUrl('movie/popular'))
   }
 
-  get getMovie(id: any):Observable<any>{
+  // @ts-ignore
+  getMovie(id: any){
     return this.http.get<any>(this.withBaseUrl(`movie/${id}`))
   }
 }
