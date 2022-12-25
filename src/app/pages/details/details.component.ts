@@ -10,6 +10,7 @@ import {MovieApiService} from "../../service/movie-api.service";
 export class DetailsComponent implements OnInit {
   public movie: any
   public apiError: boolean = false
+
   constructor(
     private activeRoute: ActivatedRoute,
     private movieService: MovieApiService
@@ -17,22 +18,11 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.movies
+    this.movies()
   }
 
-  get movies() {
-    const id = this.activeRoute.snapshot.params['id']
-    // @ts-ignore
-    console.log(this.movieService.getMovie(id).subscribe(
-      res => {
-        this.movie = res
-      },
-      error => {
-        this.apiError = true
-      }
-    ))
-    // @ts-ignore
-    return this.movieService.getMovie(id)
+  public movies() {
+
   }
 
   getMovieCover(url: any) {
