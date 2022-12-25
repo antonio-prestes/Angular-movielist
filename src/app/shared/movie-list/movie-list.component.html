@@ -1,0 +1,24 @@
+<movie-search (emitSearch)="getSearch($event)"></movie-search>
+
+<ng-template ngFor let-movie [ngForOf]="getAllPopularMovies">
+  <section class="listagem">
+    <a [routerLink]="['details', movie.id]"  class="movie">
+      <section class="movie__status">
+        <h2>
+          {{movie.original_title}}
+        </h2>
+
+        <ul>
+          <li>Nota: {{movie.vote_average}}</li>
+           <li>Lançamento: {{movie.release_date}}</li>
+        </ul>
+
+      </section>
+      <section class="movie__image">
+        <img [src]="getMovieCover(movie.poster_path)" alt="movie">
+      </section>
+    </a>
+  </section>
+</ng-template>
+
+
